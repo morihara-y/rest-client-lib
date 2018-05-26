@@ -1,6 +1,10 @@
 #eclipse
-.metadata
+*.metadata
+*.settings
+*.classpath
+*.project
 RemoteSystemsTempFiles
+target-server-side
 
 # Compiled class file
 *.class

@@ -6,6 +6,7 @@
 *.recommenders
 RemoteSystemsTempFiles
 target-server-side
+target
 
 # Compiled class file
 *.class

@@ -1,5 +1,6 @@
 package rest.client.lib;
 
+import java.util.Locale;
 import java.util.Map;
 
 import org.springframework.core.ParameterizedTypeReference;
@@ -44,13 +45,19 @@ class RestExecutor {
     }
 
     private String makeUrl(String serviceCode, EndPoint endPoint) {
-        // TODO Get URL prefix and context root by serviceCode
-        String prefix = "http://test.com/test";
+        String prefix = getMsaUrlPrefix(serviceCode);
 
         StringBuilder sb = new StringBuilder();
         sb.append(prefix);
         sb.append(endPoint.getEndPoint());
         return sb.toString();
+    }
+    
+    private String getMsaUrlPrefix(String serviceCode) {
+    	// Get URL prefix from vm argument
+    	serviceCode = serviceCode.trim().toUpperCase(Locale.ROOT).replace('-', '_');
+        final String systemPropertyKey = "MSA_" + serviceCode;
+        return System.getProperty(systemPropertyKey);
     }
 
 
